@@ -1,27 +1,48 @@
-# PortfolioFront
+# Portfolio Uygulaması
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.15.
+Bu proje, bir **frontend geliştiricisinin** deneyimlerini, projelerini ve yeteneklerini sergilemek için tasarlanmış modern bir portföy uygulamasıdır. **Angular** framework'ü kullanılarak geliştirilmiştir.
 
-## Development server
+## Özellikler
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Hakkımda**: Geliştirici hakkında genel bir tanıtım.
+- **Deneyimler**: Geliştiricinin önceki projelerdeki deneyimlerini ve genel katkılarını listeleyen bir zaman çizelgesi.
+- **Projeler**: Tamamlanmış projeleri görselleriyle birlikte detaylandıran bir grid yapısı.
+- **Yetenekler**: Teknik becerilerin ve kullanılan araçların listesi.
+- **İletişim**: Kullanıcıların geliştiriciyle iletişim kurması için bir form.
 
-## Code scaffolding
+---
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Kullanılan Teknolojiler
 
-## Build
+- **Angular**: Uygulama geliştirme için.
+- **SCSS**: Daha organize ve yeniden kullanılabilir stiller için.
+- **HTML5** ve **CSS3**: Temel yapı ve tasarım.
+- **TypeScript**: Dinamik verilerin işlenmesi ve yönetimi.
+- **Git**: Kaynak kod kontrolü için.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Running unit tests
+## Proje Yapısı
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 1. Bileşenler
 
-## Running end-to-end tests
+- **`portfolio.component.ts`**: Dinamik verilerin yönetildiği ve bileşenin temel işlevselliklerinin tanımlandığı TypeScript dosyası.
+- **`portfolio.component.html`**: Kullanıcı arayüzünün şablonu.
+- **`portfolio.component.scss`**: Şablonun stil dosyası.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### 2. Veriler
 
-## Further help
+Projede kullanılan statik veriler `experiences`, `projects` ve `skills` dizileri aracılığıyla dinamik olarak işlenir.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+---
+
+## Kurulum
+
+Bu projeyi çalıştırmak için aşağıdaki adımları takip edebilirsiniz:
+
+### 1. Depoyu Klonlayın
+
+```bash
+git clone https://github.com/ilaydanurcal/portfolio-app.git
+cd portfolio-app
+```
