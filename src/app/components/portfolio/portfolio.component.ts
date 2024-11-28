@@ -16,64 +16,42 @@ interface Project {
 export class PortfolioComponent {
   experiences = [
     {
-      title: 'CRM Uygulaması',
+      title: 'Akım Metal AR-GE',
+      subtitle: 'Front-End Developer',
+      date: '09/2023 - present',
       description:
-        'Kullanıcı dostu bir CRM platformu tasarımı ve geliştirilmesi.',
-      generalDetail:
-        'Karmaşık iş süreçlerini basitleştirmek ve kullanıcı odaklı çözümler geliştirmek için çalıştım.',
-      details: [
-        'Angular kullanarak dinamik bileşenler geliştirdim.',
-        'Kullanıcı etkileşimini artırmak için performans optimizasyonları yaptım.',
-        'Veri görselleştirme ve yönetim araçlarını entegre ettim.',
-      ],
-    },
-    {
-      title: 'Yapay Zeka Projesi (UI Geliştirme)',
-      description:
-        'Yapay zeka tabanlı bir platform için kullanıcı arayüzü geliştirilmesi.',
-      generalDetail:
-        'Kullanıcıların verimli bir şekilde AI tabanlı çözümlere erişimini kolaylaştırmayı hedefledim.',
-      details: [
-        'Doküman yükleme ve AI tabanlı yanıt sistemi için arayüz geliştirdim.',
-        'Responsive ve modern bir tasarım sağlamak için PrimeNG ve SCSS kullandım.',
-        'Karmaşık veri akışlarını yönetmek için kullanıcı dostu bileşenler geliştirdim.',
-      ],
-    },
-    {
-      title: 'İnsan Kaynakları Projesi',
-      description:
-        'Çalışan yönetimi ve görev atama için UI tasarımı ve geliştirilmesi.',
-      generalDetail:
-        'Ekiplerin görevlerini etkili bir şekilde yönetebileceği sezgisel bir sistem oluşturmayı amaçladım.',
-      details: [
-        'Dinamik tablo yapısı ve veri görselleştirme araçları geliştirdim.',
-        'Mobil uyumlu tasarımlar ve sezgisel arayüzler oluşturdum.',
-        'Bildirim ve görev atama işlevselliğini UI bileşenleriyle optimize ettim.',
-      ],
+        'Implemented and maintained responsive web applications using Angular, ensuring seamless user experiences across devices.Developed and optimized reusable UI components, improving consistency and efficiency in the development process.Enhanced application performance by implementing best practices in frontend development and optimizing code structure.',
     },
   ];
 
   projects = [
     {
-      name: 'CRM Uygulaması',
-      subtitle: 'Angular ile geliştirilmiş',
+      name: 'MateBot - CRM Application',
       description:
-        'Kullanıcı dostu bir CRM platformu. Dinamik ve sezgisel bileşenlerle zenginleştirilmiştir.',
+        'This project was developed to optimize and simplify business processes for enterprises. It offers dynamic and intuitive components.',
       image: 'https://picsum.photos/seed/project1/400/300',
+      tags: ['Angular', 'PrimeNG'],
     },
     {
-      name: 'Yapay Zeka Projesi',
-      subtitle: 'PrimeNG ve SCSS ile tasarlanmış',
+      name: 'MateBot Promotional Website',
       description:
-        'Kullanıcıların doküman yükleyip, AI tabanlı hızlı yanıt almasını sağlayan bir sistem.',
-      image: 'https://picsum.photos/seed/project2/400/300',
-    },
-    {
-      name: 'İnsan Kaynakları Projesi',
-      subtitle: 'Mobil uyumlu ve modern',
-      description:
-        'Görev atama, bildirim ve çalışan yönetimi için tasarlanmış bir UI projesi.',
+        'Designed to highlight the features and benefits of the platform, the promotional website provides businesses with a clear overview of how they can improve productivity and efficiency.',
       image: 'https://picsum.photos/seed/project3/400/300',
+      tags: ['HTML', 'CSS', 'TypeScript'],
+    },
+    {
+      name: 'AI Project',
+      description:
+        'Allows users to upload documents and receive accurate and fast responses to their questions with AI support.',
+      image: 'https://picsum.photos/seed/project2/400/300',
+      tags: ['Angular', 'PrimeNG'],
+    },
+    {
+      name: 'Human Resources Project',
+      description:
+        'Developed to optimize employee management, task assignment processes, and notification functionality.',
+      image: 'https://picsum.photos/seed/project3/400/300',
+      tags: ['Angular', 'PrimeNG'],
     },
   ];
 

@@ -1,18 +1,22 @@
 /* Genel Ayarlar */
+$primary-color: #007bff;
+$secondary-color: #e0e0e0;
+$font-color: #333;
+$bg-color: #f4f4f9;
+
 body {
   font-family: "Arial", sans-serif;
   line-height: 1.6;
   margin: 0;
   padding: 0;
-  color: #333;
-  background-color: #f4f4f9;
+  color: $font-color;
+  background-color: $bg-color;
 }
 
 .container {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 0;
 }
 
 a {
@@ -21,14 +25,48 @@ a {
   transition: color 0.3s ease;
 
   &:hover {
-    color: #333;
+    color: $font-color;
+  }
+}
+
+/* Animasyonlar */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
 /* Header */
 header {
-  background: #e0e0e0;
-  color: #333;
+  background: $secondary-color;
+  color: $font-color;
   padding: 1rem 0;
 
   .container {
@@ -36,17 +74,20 @@ header {
     justify-content: space-between;
     align-items: center;
 
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 1.5rem;
+    nav {
+      ul {
+        display: flex;
+        list-style: none;
+        gap: 1.5rem;
 
-      li a {
-        font-weight: bold;
-        color: #333;
+        li {
+          a {
+            font-weight: bold;
 
-        &:hover {
-          color: #555;
+            &:hover {
+              color: darken($font-color, 10%);
+            }
+          }
         }
       }
     }
@@ -70,20 +111,29 @@ header {
   }
 }
 
-/* About Section */
+/* Hakkımda Bölümü */
 .about {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 2rem;
   padding: 2rem 0;
+  animation: fadeIn 1s ease-in-out;
 
   .about-content {
     flex: 1;
 
     h2 {
-      font-size: 2rem;
       margin-bottom: 1rem;
+
+      &:after {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 4px;
+        margin: 0.5rem 0;
+        animation: scaleUp 0.5s ease-out;
+      }
     }
 
     p {
@@ -106,66 +156,142 @@ header {
   }
 }
 
-/* Experience Section */
+/* Deneyimler */
 #experience {
-  padding: 2rem 0;
+  line-height: 1.6;
+  color: #333;
 
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+  margin: 0 auto;
+  padding: 20px;
+  .timeline {
+    position: relative;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
   }
 
-  .experience-timeline {
+  .timeline::before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    background-color: #e0e0e0;
+    top: 0;
+    bottom: 0;
+    right: 23.4%;
+    margin-left: -1px;
+  }
+
+  .experience-card {
+    padding: 20px 30px;
+    background-color: #f8f8f8;
+    position: relative;
+    border-radius: 6px;
+    width: calc(50% - 40px);
+    margin-bottom: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    //   animation: _ngcontent-ng-c3711417685_scaleUp 1.3s ease-in-out;
+    // transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .experience-card:nth-child(even) {
+    left: 50%;
+  }
+
+  .experience-card:nth-child(odd) {
+    left: 0;
+  }
+
+  .experience-card:nth-child(even)::after {
+    left: -50px;
+  }
+
+  .experience-card h2 {
+    margin-top: 0;
+  }
+
+  .experience-card .date {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #e0e0e0;
+    border-radius: 20px;
+    font-size: 0.8em;
+    margin-bottom: 10px;
+  }
+  .circle-icon {
+    position: absolute;
+    top: 22px;
+    right: -58px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 2px solid #e0e0e0;
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    border-left: 2px solid #ccc;
-    padding-left: 1rem;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
 
-    .experience-item {
-      position: relative;
-      .experience-date {
-        font-weight: bold;
-        color: #555;
-      }
-
-      .experience-content {
-        h3 {
-          font-size: 1.5rem;
-        }
-
-        ul {
-          list-style: disc;
-          padding-left: 1.5rem;
-
-          li {
-            line-height: 1.6;
-          }
-        }
-      }
+    i {
+      font-size: 18px;
+      color: #007bff;
     }
   }
 }
 
-/* Projects Section */
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Projeler */
 .projects-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  padding: 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(391px, 1fr));
+  gap: 2rem;
+  max-width: 870px;
+  margin: 0 auto;
 
   .project-card {
     background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    flex: 1 1 calc(33.333% - 1.5rem);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: scaleUp 1.3s ease-in-out;
     transition: transform 0.3s, box-shadow 0.3s;
 
     &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     }
 
     .project-image {
@@ -175,39 +301,43 @@ header {
     }
 
     .project-content {
-      padding: 1rem;
+      padding: 20px;
 
       h3 {
-        font-size: 1.25rem;
-        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+        margin: 0 0 10px;
       }
 
       p {
-        color: #555;
-        line-height: 1.6;
-        margin-bottom: 1rem;
+        font-size: 1rem;
+        color: darken($font-color, 20%);
+        margin: 0 0 20px;
       }
 
-      .button {
-        display: inline-block;
-        background: #555;
-        color: #fff;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
-        font-weight: bold;
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
 
-        &:hover {
-          background: #333;
+        .tag {
+          background: lighten($primary-color, 40%);
+          color: darken($primary-color, 30%);
+          font-size: 0.9rem;
+          padding: 5px 10px;
+          border-radius: 5px;
         }
       }
     }
   }
 }
 
-/* Skills Section */
+/* Yetenekler */
 .skills-flex {
   display: flex;
   gap: 2rem;
+  justify-content: center;
+  animation: fadeIn 1.5s ease-in-out;
+
   .skills-grid {
     display: flex;
     flex-wrap: wrap;
@@ -223,19 +353,26 @@ header {
       text-align: center;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       flex: 1 1 calc(25% - 1rem);
+      animation: scaleUp 1s ease-in-out;
+      transition: transform 0.3s, box-shadow 0.3s;
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      }
     }
   }
 }
 
-/* Contact Section*/
+/* İletişim */
 .contact {
   padding: 2rem 0;
-  color: #333;
 
   h2 {
     font-size: 2rem;
     text-align: center;
     margin-bottom: 1.5rem;
+    animation: slideIn 1s ease-out;
   }
 
   .contact-form {
@@ -245,12 +382,9 @@ header {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    animation: fadeIn 1.5s ease-in-out;
 
     .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-
       label {
         font-size: 1rem;
         font-weight: bold;
@@ -262,32 +396,28 @@ header {
         border: 1px solid #ccc;
         border-radius: 4px;
         font-size: 1rem;
-        width: 100%;
-        box-sizing: border-box;
 
         &:focus {
-          border-color: #555;
+          border-color: darken($font-color, 10%);
           outline: none;
         }
-      }
-
-      textarea {
-        resize: none;
       }
     }
 
     .submit-button {
       padding: 0.75rem 1.5rem;
-      background: #555;
+      background: $font-color;
       color: #fff;
       border: none;
       border-radius: 4px;
       font-size: 1rem;
       font-weight: bold;
       cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
 
       &:hover {
-        background: #333;
+        background: $primary-color;
+        transform: translateY(-3px);
       }
     }
   }
@@ -297,10 +427,6 @@ header {
 footer {
   text-align: center;
   padding: 1rem 0;
-  background: #e0e0e0;
-  color: #555;
-
-  #current-year {
-    font-weight: bold;
-  }
+  background: $secondary-color;
+  color: darken($font-color, 20%);
 }
