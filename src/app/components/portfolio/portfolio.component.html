@@ -38,20 +38,22 @@
 
 <main class="container">
   <section id="about" class="about">
+    <h2>Hakkımda</h2>
     <div class="about-content">
-      <h2>Hakkımda</h2>
       <p>
-        Hello, I'm İlayda. I am a frontend developer with 1 years of experience.
-        I work on developing user-focused websites and applications. My core
-        expertise is in JavaScript and Angular.
+        Hello, I'm İlayda. I am a passionate frontend developer with 1 year of
+        experience in building dynamic and responsive user interfaces. I
+        specialize in creating user-friendly and accessible web applications
+        using JavaScript and Angular. My approach focuses on delivering
+        high-quality, scalable, and visually appealing designs that meet user
+        needs and business goals. I thrive in collaborative environments,
+        actively contributing to team success and consistently learning new
+        technologies to improve my skills.
       </p>
-    </div>
-    <div class="about-image">
-      <img
-        src="assets/profile.jpg"
-        alt="Profil Fotoğrafı"
-        class="profile-image"
-      />
+
+      <div class="about-image">
+        <!-- <img src="assets/me.jpg" alt="Profil Fotoğrafı" class="profile-image" /> -->
+      </div>
     </div>
   </section>
   <section id="experience" class="experience">
@@ -71,22 +73,67 @@
     </div>
   </section>
 
-  <section id="projects">
+  <!-- <section id="projects" class="projects-slider">
     <h2>Projeler</h2>
-    <div class="projects-grid">
-      <div class="project-card" *ngFor="let project of projects">
+    <div class="slider-container">
+      <button class="prev-btn" (click)="prevProject()">&#10094;</button>
+      <div class="slides">
         <div
-          class="project-image"
-          [style.backgroundImage]="'url(' + project.image + ')'"
-        ></div>
-        <div class="project-content">
-          <h3>{{ project.name }}</h3>
-          <p>{{ project.description }}</p>
-          <div class="tags">
-            <span *ngFor="let tag of project.tags" class="tag">{{ tag }}</span>
+          class="slide"
+          *ngFor="let project of projects; let i = index"
+          [class.active]="i === currentProject"
+        >
+          <div class="slide-content">
+            <h3>{{ project.name }}</h3>
+            <p>{{ project.description }}</p>
+            <div class="tags">
+              <span *ngFor="let tag of project.tags" class="tag">{{
+                tag
+              }}</span>
+            </div>
           </div>
         </div>
       </div>
+      <button class="next-btn" (click)="nextProject()">&#10095;</button>
+    </div>
+
+   
+  </section> -->
+
+  <section id="projects" class="projects-slider">
+    <h2>Projeler</h2>
+    <div class="slider-container">
+      <!-- İleri ve Geri Düğmeleri Kaldırıldı -->
+      <div
+        class="slides"
+        [ngStyle]="{ transform: 'translateX(-' + currentProject * 100 + '%)' }"
+      >
+        <div class="slide" *ngFor="let project of projects; let i = index">
+          <div class="slide-content">
+            <img
+              [src]="project.image"
+              alt="{{ project.name }}"
+              class="project-image"
+            />
+            <h3>{{ project.name }}</h3>
+            <p>{{ project.description }}</p>
+            <div class="tags">
+              <span *ngFor="let tag of project.tags" class="tag">{{
+                tag
+              }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slider Indicator -->
+    <div class="slider-indicators">
+      <span
+        *ngFor="let project of projects; let i = index"
+        [class.active]="i === currentProject"
+        (click)="setProject(i)"
+      ></span>
     </div>
   </section>
 
@@ -137,9 +184,3 @@
     </form>
   </section>
 </main>
-
-<footer>
-  <p>
-    &copy; <span id="current-year"></span> İlayda Nur Çal Tüm hakları saklıdır.
-  </p>
-</footer>

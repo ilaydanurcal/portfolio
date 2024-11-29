@@ -1,11 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 interface Project {
-  id: number;
-  title: string;
+  name: string;
   description: string;
-  details: string;
   image: string;
+  tags: string[];
 }
 
 @Component({
@@ -13,47 +12,50 @@ interface Project {
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.scss'],
 })
-export class PortfolioComponent {
+export class PortfolioComponent implements OnInit, OnDestroy {
   experiences = [
     {
       title: 'Akım Metal AR-GE',
       subtitle: 'Front-End Developer',
       date: '09/2023 - present',
       description:
-        'Implemented and maintained responsive web applications using Angular, ensuring seamless user experiences across devices.Developed and optimized reusable UI components, improving consistency and efficiency in the development process.Enhanced application performance by implementing best practices in frontend development and optimizing code structure.',
+        'Implemented and maintained responsive web applications using Angular, ensuring seamless user experiences across devices. Developed and optimized reusable UI components, improving consistency and efficiency in the development process. Enhanced application performance by implementing best practices in frontend development and optimizing code structure.',
     },
   ];
 
-  projects = [
+  projects: Project[] = [
     {
       name: 'MateBot - CRM Application',
       description:
         'This project was developed to optimize and simplify business processes for enterprises. It offers dynamic and intuitive components.',
-      image: 'https://picsum.photos/seed/project1/400/300',
+      image: 'assets/matebot.png',
       tags: ['Angular', 'PrimeNG'],
     },
     {
       name: 'MateBot Promotional Website',
       description:
         'Designed to highlight the features and benefits of the platform, the promotional website provides businesses with a clear overview of how they can improve productivity and efficiency.',
-      image: 'https://picsum.photos/seed/project3/400/300',
+      image: 'assets/webtanitim.png',
       tags: ['HTML', 'CSS', 'TypeScript'],
     },
     {
       name: 'AI Project',
       description:
         'Allows users to upload documents and receive accurate and fast responses to their questions with AI support.',
-      image: 'https://picsum.photos/seed/project2/400/300',
+      image: 'assets/docs.png',
       tags: ['Angular', 'PrimeNG'],
     },
     {
       name: 'Human Resources Project',
       description:
         'Developed to optimize employee management, task assignment processes, and notification functionality.',
-      image: 'https://picsum.photos/seed/project3/400/300',
+      image: 'assets/ik.png',
       tags: ['Angular', 'PrimeNG'],
     },
   ];
+
+  currentProject: number = 0;
+  autoSlideInterval: any;
 
   skills = [
     'Angular',
@@ -66,6 +68,10 @@ export class PortfolioComponent {
     'Git',
   ];
 
+  ngOnInit(): void {
+    this.startAutoSlide();
+  }
+
   navigateTo(platform: string): void {
     const urls: { [key: string]: string } = {
       github: 'https://github.com/ilaydanurcal',
@@ -77,5 +83,38 @@ export class PortfolioComponent {
     if (url) {
       window.open(url, '_blank');
     }
+  }
+
+  ngOnDestroy(): void {
+    if (this.autoSlideInterval) {
+      clearInterval(this.autoSlideInterval);
+    }
+  }
+
+  nextProject(): void {
+    this.currentProject = (this.currentProject + 1) % this.projects.length;
+  }
+
+  prevProject(): void {
+    this.currentProject =
+      (this.currentProject - 1 + this.projects.length) % this.projects.length;
+  }
+
+  setProject(index: number): void {
+    this.currentProject = index;
+    this.resetAutoSlide();
+  }
+
+  startAutoSlide(): void {
+    this.autoSlideInterval = setInterval(() => {
+      this.nextProject();
+    }, 5000); // Her 5 saniyede bir sonraki projeye geçer
+  }
+
+  resetAutoSlide(): void {
+    if (this.autoSlideInterval) {
+      clearInterval(this.autoSlideInterval);
+    }
+    this.startAutoSlide();
   }
 }
