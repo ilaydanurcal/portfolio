@@ -107,16 +107,13 @@ header {
   display: flex;
   flex-direction: column;
   width: 70%;
-
   animation: fadeIn 1s ease-in-out;
 
   .about-content {
     display: flex;
     gap: 6rem;
     padding: 20px 30px;
-    background-color: #f8f8f8;
-    border-radius: 6px;
-    background: #fff;
+    background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
@@ -157,64 +154,60 @@ header {
 #experience {
   line-height: 1.6;
   color: #333;
-
   margin: 0 auto;
 
   .timeline {
     position: relative;
     padding: 20px 0;
     display: flex;
-  }
 
-  .timeline::before {
-    content: "";
-    position: absolute;
-    width: 2px;
-    background-color: #e0e0e0;
-    top: 0;
-    bottom: 0;
-    right: 50%;
-    margin-left: -1px;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 2px;
+      background-color: #e0e0e0;
+      top: 0;
+      bottom: 0;
+      right: 50%;
+      margin-left: -1px;
+    }
   }
 
   .experience-card {
     padding: 20px 30px;
-    background-color: #f8f8f8;
+    background-color: #fff;
     position: relative;
-    border-radius: 6px;
+    border-radius: 10px;
     width: calc(50% - 40px);
     margin-bottom: 30px;
-    background: #fff;
-    border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    //   animation: _ngcontent-ng-c3711417685_scaleUp 1.3s ease-in-out;
-    // transition: transform 0.3s, box-shadow 0.3s;
+
+    &:nth-child(even) {
+      left: 50%;
+    }
+
+    &:nth-child(odd) {
+      left: 0;
+    }
+
+    &:nth-child(even)::after {
+      left: -50px;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    .date {
+      display: inline-block;
+      padding: 5px 10px;
+      background-color: #e0e0e0;
+      border-radius: 20px;
+      font-size: 0.8em;
+      margin-bottom: 10px;
+    }
   }
 
-  .experience-card:nth-child(even) {
-    left: 50%;
-  }
-
-  .experience-card:nth-child(odd) {
-    left: 0;
-  }
-
-  .experience-card:nth-child(even)::after {
-    left: -50px;
-  }
-
-  .experience-card h2 {
-    margin-top: 0;
-  }
-
-  .experience-card .date {
-    display: inline-block;
-    padding: 5px 10px;
-    background-color: #e0e0e0;
-    border-radius: 20px;
-    font-size: 0.8em;
-    margin-bottom: 10px;
-  }
   .circle-icon {
     position: absolute;
     top: 22px;
@@ -236,96 +229,6 @@ header {
   }
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Projeler */
-// .projects-grid {
-//   display: grid;
-//   grid-template-columns: repeat(auto-fit, minmax(391px, 1fr));
-//   gap: 2rem;
-//   max-width: 870px;
-
-//   .project-card {
-//     background: #fff;
-//     border-radius: 10px;
-//     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-//     animation: scaleUp 1.3s ease-in-out;
-//     transition: transform 0.3s, box-shadow 0.3s;
-
-//     &:hover {
-//       transform: translateY(-5px) scale(1.05);
-//       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-//     }
-
-//     .project-image {
-//       height: 200px;
-//       background-size: cover;
-//       background-position: center;
-//     }
-
-//     .project-content {
-//       padding: 20px;
-
-//       h3 {
-//         font-size: 1.5rem;
-//         margin: 0 0 10px;
-//       }
-
-//       p {
-//         font-size: 1rem;
-//         color: darken($font-color, 20%);
-//         margin: 0 0 20px;
-//       }
-
-//       .tags {
-//         display: flex;
-//         flex-wrap: wrap;
-//         gap: 10px;
-
-//         .tag {
-//           background: lighten($primary-color, 40%);
-//           color: darken($primary-color, 30%);
-//           font-size: 0.9rem;
-//           padding: 5px 10px;
-//           border-radius: 5px;
-//         }
-//       }
-//     }
-//   }
-// }
-
 /* Projeler */
 .projects-slider {
   position: relative;
@@ -333,9 +236,7 @@ header {
   padding: 2rem 0;
 
   h2 {
-    text-align: center;
     margin-bottom: 2rem;
-    font-size: 2rem;
     color: $font-color;
   }
 
@@ -345,8 +246,6 @@ header {
     position: relative;
     width: 100%;
     overflow: hidden;
-
-    /* İleri ve Geri Düğmelerin CSS'ini Kaldırdık */
 
     .slides {
       display: flex;
@@ -466,8 +365,6 @@ header {
   padding: 2rem 0;
 
   h2 {
-    font-size: 2rem;
-    text-align: center;
     margin-bottom: 1.5rem;
     animation: slideIn 1s ease-out;
   }
@@ -493,10 +390,15 @@ header {
 
       input,
       textarea {
-        padding: 0.75rem;
-        border: 1px solid #ccc;
-        border-radius: 4px;
+        width: 100%;
+        height: auto;
+        resize: none;
+        padding: 0.75rem 1rem;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
         font-size: 1rem;
+        transition: all 0.3s ease;
+        background-color: #f8f9fa;
 
         &:focus {
           border-color: darken($font-color, 10%);
@@ -506,7 +408,7 @@ header {
     }
 
     .submit-button {
-      padding: 0.75rem 1.5rem;
+      padding: 1rem;
       background: $font-color;
       color: #fff;
       border: none;
@@ -520,6 +422,95 @@ header {
         background: $primary-color;
         transform: translateY(-3px);
       }
+    }
+  }
+  .error-message {
+    color: #e63946; /* Hata mesajı rengi */
+    font-size: 0.9rem;
+  }
+
+  input.ng-invalid.ng-touched,
+  textarea.ng-invalid.ng-touched {
+    border: 1px solid #e63946 !important;
+  }
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+  }
+
+  header {
+    .container {
+      flex-direction: column;
+      gap: 1rem;
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+
+  .about {
+    width: 100%;
+
+    .about-content {
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .about-image {
+      flex: 0 0 150px;
+    }
+  }
+
+  #experience {
+    .timeline::before {
+      left: 31px;
+    }
+
+    .experience-card {
+      width: calc(100% - 70px);
+      margin-left: 70px;
+
+      &:nth-child(even) {
+        left: 0;
+      }
+    }
+
+    .circle-icon {
+      left: -57px;
+    }
+  }
+
+  .projects-slider {
+    .slider-container {
+      .slides {
+        .slide {
+          .slide-content {
+            padding: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  .skills-flex {
+    flex-direction: column;
+
+    .skills-grid {
+      padding: 0;
+      .skill-card {
+        flex: 1 1 calc(50% - 1rem);
+      }
+    }
+  }
+
+  .contact {
+    .contact-form {
+      width: 100%;
     }
   }
 }

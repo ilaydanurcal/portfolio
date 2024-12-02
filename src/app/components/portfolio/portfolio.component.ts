@@ -13,9 +13,15 @@ interface Project {
   styleUrls: ['./portfolio.component.scss'],
 })
 export class PortfolioComponent implements OnInit, OnDestroy {
+  formData = {
+    name: '',
+    email: '',
+    message: '',
+  };
+  showErrors: boolean = false;
   experiences = [
     {
-      title: 'Akım Metal AR-GE',
+      title: 'Akım Metal R&D',
       subtitle: 'Front-End Developer',
       date: '09/2023 - present',
       description:
@@ -36,7 +42,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
       description:
         'Designed to highlight the features and benefits of the platform, the promotional website provides businesses with a clear overview of how they can improve productivity and efficiency.',
       image: 'assets/webtanitim.png',
-      tags: ['HTML', 'CSS', 'TypeScript'],
+      tags: ['Angular', 'PrimeNG'],
     },
     {
       name: 'AI Project',
@@ -116,5 +122,23 @@ export class PortfolioComponent implements OnInit, OnDestroy {
       clearInterval(this.autoSlideInterval);
     }
     this.startAutoSlide();
+  }
+
+  onSubmit(form: any): void {
+    if (form.valid) {
+      console.log('Form Data:', this.formData);
+
+      // Reset form after successful submission
+      form.reset();
+      this.showErrors = false;
+    } else {
+      this.showErrors = true; // Gösterilecek hata mesajları için flag ayarı
+    }
+  }
+
+  checkForErrors(form: any): void {
+    if (!form.valid) {
+      this.showErrors = true; // Form geçersizse hata mesajlarını göster
+    }
   }
 }
