@@ -28,7 +28,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
       name: 'MateBot - CRM Application',
       description:
         'This project was developed to optimize and simplify business processes for enterprises. It offers dynamic and intuitive components.',
-      image: 'assets/matebot.png',
+      image: 'assets/11.svg',
       tags: ['Angular', 'PrimeNG'],
     },
     {
